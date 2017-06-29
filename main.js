@@ -7,3 +7,5 @@ class Car {
     this.location = location
   }
 }
+
+const racer = new Car()
