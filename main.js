@@ -24,6 +24,25 @@ class RaceCar {
     this.speed = speed
     this.location = location
   }
+
+  move() {
+    switch (this.direction) {
+      case 'north' : this.location[1] -= 1
+        break
+      case 'south' : this.location[1] += 1
+        break
+      case 'east' : this.location[0] += 1
+        break
+      case 'west' : this.location[0] -= 1
+        break
+      default : alert('Error: Wrong Direction Indicated!')
+        break
+    }
+  }
+
+  static start(car) {
+    setInterval(() => car.move(), 250)
+  }
 }
 
 function createMap(map) {
@@ -73,3 +92,9 @@ const $racer = createElement('div', { class: 'car' }, [])
 const racer = new RaceCar($racer, 'north', 0, [5, 13])
 
 createMap(world)
+
+document.addEventListener('keypress', function (event) {
+  if (event.keyCode === 32) {
+    RaceCar.start(racer)
+  }
+})
