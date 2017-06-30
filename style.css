@@ -1,0 +1,35 @@
+div {
+  line-height: 0;
+}
+
+.car {
+  width: 45px;
+  height: 45px;
+  background-image: url('car-image.png');
+  display: inline-block;
+  background-size: contain;
+}
+
+.wall {
+  width: 45px;
+  height: 45px;
+  background-image: url('wall.png');
+  display: inline-block;
+  background-size: contain;
+}
+
+.ground {
+  width: 45px;
+  height: 45px;
+  background-image: url('ground.png');
+  display: inline-block;
+  background-size: contain;
+}
+
+.yellow {
+  width: 45px;
+  height: 45px;
+  background-image: url('yellow.png');
+  display: inline-block;
+  background-size: contain;
+}
