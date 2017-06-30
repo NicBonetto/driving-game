@@ -1,3 +1,31 @@
-* {
-  margin: 0;
+div {
+  line-height: 0;
+}
+
+.car {
+  width: 50px;
+  height: 50px;
+  background-image: url('car-image.png');
+  display: inline-block;
+}
+
+.wall {
+  width: 50px;
+  height: 50px;
+  background-image: url('wall.png');
+  display: inline-block;
+}
+
+.ground {
+  width: 50px;
+  height: 50px;
+  background-image: url('ground.png');
+  display: inline-block;
+}
+
+.yellow {
+  width: 50px;
+  height: 50px;
+  background-image: url('yellow.png');
+  display: inline-block;
 }
