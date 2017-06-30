@@ -25,9 +25,13 @@ class RaceCar {
     this.location = location
   }
 
+  turn(change) {
+    this.direction = change
+  }
+
   move() {
     switch (this.direction) {
-      case 'north' :
+      case 38 :
         if (world[this.location[0] - this.speed][this.location[1]] !== 1) {
           world[this.location[0]][this.location[1]] = 2
           this.location[0] -= this.speed
@@ -35,17 +39,17 @@ class RaceCar {
           createMap(world)
         }
         break
-      case 'south' :
+      case 40 :
         if (world[this.location[0] + this.speed][this.location[1]] !== 1) {
           this.location[0] += this.speed
         }
         break
-      case 'east' :
+      case 39 :
         if (world[this.location[0]][this.location[1] - this.speed] !== 1) {
           this.location[1] += this.speed
         }
         break
-      case 'west' :
+      case 37 :
         if (world[this.location[0]][this.location[1] - this.speed] !== 1) {
           this.location[1] -= this.speed
         }
@@ -110,7 +114,7 @@ function createElement(tagName, attributes, children) {
 
 const $racer = createElement('div', { class: 'car' }, [])
 
-const racer = new RaceCar($racer, 'north', 1, [12, 5])
+const racer = new RaceCar($racer, 38, 1, [12, 5])
 
 let spaceCounter = 0
 
