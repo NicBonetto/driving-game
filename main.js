@@ -56,7 +56,12 @@ class RaceCar {
   }
 
   static start(car) {
-    setInterval(() => car.move(), 250)
+    const intervalID = setInterval(() => car.move(), 250)
+    this.intervalID = intervalID
+  }
+
+  static stop(car) {
+    clearInterval(this.intervalID)
   }
 }
 
@@ -107,10 +112,18 @@ const $racer = createElement('div', { class: 'car' }, [])
 
 const racer = new RaceCar($racer, 'north', 1, [12, 5])
 
+let spaceCounter = 0
+
 createMap(world)
 
 document.addEventListener('keypress', function (event) {
   if (event.keyCode === 32) {
-    RaceCar.start(racer)
+    if (spaceCounter % 2 !== 0) {
+      RaceCar.stop(racer)
+    }
+    else {
+      RaceCar.start(racer)
+    }
+    spaceCounter++
   }
 })
