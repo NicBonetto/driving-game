@@ -17,8 +17,9 @@ let world = [
   [1, 2, 2, 3, 2, 2, 1]
 ]
 
-class RacerCar {
-  constructor(direction, speed, location) {
+class RaceCar {
+  constructor($car, direction, speed, location) {
+    this.$car = $car
     this.direction = direction
     this.speed = speed
     this.location = location
@@ -52,4 +53,18 @@ function createMap(map) {
   }
 }
 
+function createElement(tagName, attributes, children) {
+  const $element = document.createElement(tagName)
+
+  for (const key in attributes) {
+    $element.setAttribute(key, attributes[key])
+  }
+
+  children.forEach(child => $element.appendChild(child))
+
+  return $element
+}
+
 createMap(world)
+
+const racer = new RaceCar()
