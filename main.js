@@ -41,17 +41,26 @@ class RaceCar {
         break
       case 40 :
         if (world[this.location[0] + this.speed][this.location[1]] !== 1) {
+          world[this.location[0]][this.location[1]] = 2
           this.location[0] += this.speed
+          world[this.location[0]][this.location[1]] = 4
+          createMap(world)
         }
         break
       case 39 :
-        if (world[this.location[0]][this.location[1] - this.speed] !== 1) {
+        if (world[this.location[0]][this.location[1] + this.speed] !== 1) {
+          world[this.location[0]][this.location[1]] = 2
           this.location[1] += this.speed
+          world[this.location[0]][this.location[1]] = 4
+          createMap(world)
         }
         break
       case 37 :
         if (world[this.location[0]][this.location[1] - this.speed] !== 1) {
+          world[this.location[0]][this.location[1]] = 2
           this.location[1] -= this.speed
+          world[this.location[0]][this.location[1]] = 4
+          createMap(world)
         }
         break
       default : alert('Error: Wrong Direction Indicated!')
@@ -129,5 +138,11 @@ document.addEventListener('keypress', function (event) {
       RaceCar.start(racer)
     }
     spaceCounter++
+  }
+})
+
+document.addEventListener('keydown', function (event) {
+  if (event.keyCode === 37 || event.keyCode === 38 || event.keyCode === 39 || event.keyCode === 40) {
+    racer.turn(event.keyCode)
   }
 })
