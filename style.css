@@ -28,15 +28,14 @@ h4 {
 .ground {
   width: 45px;
   height: 45px;
-  background-image: url('ground.png');
   display: inline-block;
   background-size: contain;
 }
 
-.yellow {
+.coin {
   width: 45px;
   height: 45px;
-  background-image: url('yellow.png');
+  background-image: url('coin-image.ico');
   display: inline-block;
   background-size: contain;
 }
