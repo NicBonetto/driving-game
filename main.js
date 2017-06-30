@@ -1,20 +1,20 @@
 /* eslint-disable no-unused-vars */
 
 let world = [
-  [1, 1, 1, 1, 1, 1, 1],
-  [1, 2, 2, 3, 2, 2, 1],
-  [1, 2, 2, 2, 2, 2, 1],
-  [1, 2, 2, 2, 2, 2, 1],
-  [1, 2, 2, 3, 2, 2, 1],
-  [1, 2, 2, 3, 2, 2, 1],
-  [1, 2, 2, 2, 2, 2, 1],
-  [1, 2, 2, 2, 2, 2, 1],
-  [1, 2, 2, 3, 2, 2, 1],
-  [1, 2, 2, 3, 2, 2, 1],
-  [1, 2, 2, 2, 2, 2, 1],
-  [1, 2, 2, 2, 2, 2, 1],
-  [1, 2, 2, 3, 2, 4, 1],
-  [1, 1, 1, 1, 1, 1, 1]
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 3, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 3, 1],
+  [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+  [1, 2, 2, 3, 2, 2, 2, 2, 2, 2, 3, 2, 2, 1],
+  [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+  [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+  [1, 3, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 3, 1],
+  [1, 3, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 3, 1],
+  [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+  [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+  [1, 2, 2, 3, 2, 2, 2, 2, 2, 2, 3, 2, 2, 1],
+  [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+  [1, 3, 2, 2, 2, 2, 2, 4, 2, 2, 2, 2, 3, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ]
 
 class RaceCar {
@@ -102,9 +102,9 @@ function createMap(map) {
           $world.appendChild($ground)
           break
         case 3 :
-          const $yellow = document.createElement('div')
-          $yellow.classList.add('yellow')
-          $world.appendChild($yellow)
+          const $coin = document.createElement('div')
+          $coin.classList.add('coin')
+          $world.appendChild($coin)
           break
         case 4 :
           $world.appendChild($racer)
@@ -129,7 +129,7 @@ function createElement(tagName, attributes, children) {
 
 const $racer = createElement('div', { class: 'car car-up' }, [])
 
-const racer = new RaceCar($racer, 38, 1, [12, 5])
+const racer = new RaceCar($racer, 38, 1, [12, 7])
 
 let spaceCounter = 0
 
