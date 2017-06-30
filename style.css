@@ -2,6 +2,10 @@ div {
   line-height: 0;
 }
 
+.container {
+  text-align: center;
+}
+
 .car {
   width: 45px;
   height: 45px;
