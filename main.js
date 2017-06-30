@@ -25,29 +25,48 @@ class RaceCar {
     this.location = location
   }
 
+  turn(change) {
+    this.direction = change
+  }
+
   move() {
+    this.$car.className = ''
+    this.$car.classList.add('car')
     switch (this.direction) {
-      case 'north' :
+      case 38 :
         if (world[this.location[0] - this.speed][this.location[1]] !== 1) {
+          this.$car.classList.add('car-up')
           world[this.location[0]][this.location[1]] = 2
           this.location[0] -= this.speed
           world[this.location[0]][this.location[1]] = 4
           createMap(world)
         }
         break
-      case 'south' :
+      case 40 :
         if (world[this.location[0] + this.speed][this.location[1]] !== 1) {
+          this.$car.classList.add('car-down')
+          world[this.location[0]][this.location[1]] = 2
           this.location[0] += this.speed
+          world[this.location[0]][this.location[1]] = 4
+          createMap(world)
         }
         break
-      case 'east' :
-        if (world[this.location[0]][this.location[1] - this.speed] !== 1) {
+      case 39 :
+        if (world[this.location[0]][this.location[1] + this.speed] !== 1) {
+          this.$car.classList.add('car-right')
+          world[this.location[0]][this.location[1]] = 2
           this.location[1] += this.speed
+          world[this.location[0]][this.location[1]] = 4
+          createMap(world)
         }
         break
-      case 'west' :
+      case 37 :
         if (world[this.location[0]][this.location[1] - this.speed] !== 1) {
+          this.$car.classList.add('car-left')
+          world[this.location[0]][this.location[1]] = 2
           this.location[1] -= this.speed
+          world[this.location[0]][this.location[1]] = 4
+          createMap(world)
         }
         break
       default : alert('Error: Wrong Direction Indicated!')
@@ -56,7 +75,7 @@ class RaceCar {
   }
 
   static start(car) {
-    const intervalID = setInterval(() => car.move(), 250)
+    const intervalID = setInterval(() => car.move(), 200)
     this.intervalID = intervalID
   }
 
@@ -108,9 +127,9 @@ function createElement(tagName, attributes, children) {
   return $element
 }
 
-const $racer = createElement('div', { class: 'car' }, [])
+const $racer = createElement('div', { class: 'car car-up' }, [])
 
-const racer = new RaceCar($racer, 'north', 1, [12, 5])
+const racer = new RaceCar($racer, 38, 1, [12, 5])
 
 let spaceCounter = 0
 
@@ -125,5 +144,11 @@ document.addEventListener('keypress', function (event) {
       RaceCar.start(racer)
     }
     spaceCounter++
+  }
+})
+
+document.addEventListener('keydown', function (event) {
+  if (event.keyCode === 37 || event.keyCode === 38 || event.keyCode === 39 || event.keyCode === 40) {
+    racer.turn(event.keyCode)
   }
 })
