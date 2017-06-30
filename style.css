@@ -2,6 +2,10 @@ div {
   line-height: 0;
 }
 
+h4 {
+  text-decoration: underline;
+}
+
 .container {
   text-align: center;
 }

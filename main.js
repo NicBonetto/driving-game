@@ -1,11 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 let world = [
-  [1, 2, 2, 3, 2, 2, 1],
-  [1, 2, 2, 3, 2, 2, 1],
-  [1, 2, 2, 2, 2, 2, 1],
-  [1, 2, 2, 2, 2, 2, 1],
-  [1, 2, 2, 3, 2, 2, 1],
+  [1, 1, 1, 1, 1, 1, 1],
   [1, 2, 2, 3, 2, 2, 1],
   [1, 2, 2, 2, 2, 2, 1],
   [1, 2, 2, 2, 2, 2, 1],
@@ -14,7 +10,11 @@ let world = [
   [1, 2, 2, 2, 2, 2, 1],
   [1, 2, 2, 2, 2, 2, 1],
   [1, 2, 2, 3, 2, 2, 1],
-  [1, 2, 2, 3, 2, 4, 1]
+  [1, 2, 2, 3, 2, 2, 1],
+  [1, 2, 2, 2, 2, 2, 1],
+  [1, 2, 2, 2, 2, 2, 1],
+  [1, 2, 2, 3, 2, 4, 1],
+  [1, 1, 1, 1, 1, 1, 1]
 ]
 
 class RaceCar {
@@ -104,7 +104,7 @@ function createElement(tagName, attributes, children) {
 
 const $racer = createElement('div', { class: 'car' }, [])
 
-const racer = new RaceCar($racer, 'north', 1, [13, 5])
+const racer = new RaceCar($racer, 'north', 1, [12, 5])
 
 createMap(world)
 
