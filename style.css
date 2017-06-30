@@ -7,6 +7,7 @@ div {
   height: 45px;
   background-image: url('car-image.png');
   display: inline-block;
+  background-size: contain;
 }
 
 .wall {
@@ -14,6 +15,7 @@ div {
   height: 45px;
   background-image: url('wall.png');
   display: inline-block;
+  background-size: contain;
 }
 
 .ground {
@@ -21,6 +23,7 @@ div {
   height: 45px;
   background-image: url('ground.png');
   display: inline-block;
+  background-size: contain;
 }
 
 .yellow {
@@ -28,4 +31,5 @@ div {
   height: 45px;
   background-image: url('yellow.png');
   display: inline-block;
+  background-size: contain;
 }

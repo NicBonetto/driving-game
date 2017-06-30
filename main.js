@@ -14,7 +14,7 @@ let world = [
   [1, 2, 2, 2, 2, 2, 1],
   [1, 2, 2, 2, 2, 2, 1],
   [1, 2, 2, 3, 2, 2, 1],
-  [1, 2, 2, 3, 2, 2, 1]
+  [1, 2, 2, 3, 2, 4, 1]
 ]
 
 class RaceCar {
@@ -47,6 +47,9 @@ function createMap(map) {
         $yellow.classList.add('yellow')
         $world.appendChild($yellow)
       }
+      if (map[i][j] === 4) {
+        $world.appendChild($racer)
+      }
     }
     const $br = document.createElement('br')
     $world.appendChild($br)
@@ -65,6 +68,8 @@ function createElement(tagName, attributes, children) {
   return $element
 }
 
-createMap(world)
+const $racer = createElement('div', { class: 'car' }, [])
 
-const racer = new RaceCar()
+const racer = new RaceCar($racer, 'north', 0, [5, 13])
+
+createMap(world)
