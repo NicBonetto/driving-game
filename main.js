@@ -66,23 +66,24 @@ function createMap(map) {
 
   for (let i = 0; i < map.length; i++) {
     for (let j = 0; j < map[i].length; j++) {
-      if (map[i][j] === 1) {
-        const $wall = document.createElement('div')
-        $wall.classList.add('wall')
-        $world.appendChild($wall)
-      }
-      if (map[i][j] === 2) {
-        const $ground = document.createElement('div')
-        $ground.classList.add('ground')
-        $world.appendChild($ground)
-      }
-      if (map[i][j] === 3) {
-        const $yellow = document.createElement('div')
-        $yellow.classList.add('yellow')
-        $world.appendChild($yellow)
-      }
-      if (map[i][j] === 4) {
-        $world.appendChild($racer)
+      switch (map[i][j]) {
+        case 1 :
+          const $wall = document.createElement('div')
+          $wall.classList.add('wall')
+          $world.appendChild($wall)
+          break
+        case 2 :
+          const $ground = document.createElement('div')
+          $ground.classList.add('ground')
+          $world.appendChild($ground)
+          break
+        case 3 :
+          const $yellow = document.createElement('div')
+          $yellow.classList.add('yellow')
+          $world.appendChild($yellow)
+          break
+        case 4 :
+          $world.appendChild($racer)
       }
     }
     const $br = document.createElement('br')
