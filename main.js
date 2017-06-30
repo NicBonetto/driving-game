@@ -1,11 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 let world = [
-  [1, 2, 2, 3, 2, 2, 1],
-  [1, 2, 2, 3, 2, 2, 1],
-  [1, 2, 2, 2, 2, 2, 1],
-  [1, 2, 2, 2, 2, 2, 1],
-  [1, 2, 2, 3, 2, 2, 1],
+  [1, 1, 1, 1, 1, 1, 1],
   [1, 2, 2, 3, 2, 2, 1],
   [1, 2, 2, 2, 2, 2, 1],
   [1, 2, 2, 2, 2, 2, 1],
@@ -14,7 +10,11 @@ let world = [
   [1, 2, 2, 2, 2, 2, 1],
   [1, 2, 2, 2, 2, 2, 1],
   [1, 2, 2, 3, 2, 2, 1],
-  [1, 2, 2, 3, 2, 4, 1]
+  [1, 2, 2, 3, 2, 2, 1],
+  [1, 2, 2, 2, 2, 2, 1],
+  [1, 2, 2, 2, 2, 2, 1],
+  [1, 2, 2, 3, 2, 4, 1],
+  [1, 1, 1, 1, 1, 1, 1]
 ]
 
 class RaceCar {
@@ -24,6 +24,40 @@ class RaceCar {
     this.speed = speed
     this.location = location
   }
+
+  move() {
+    switch (this.direction) {
+      case 'north' :
+        if (world[this.location[0] - this.speed][this.location[1]] !== 1) {
+          world[this.location[0]][this.location[1]] = 2
+          this.location[0] -= this.speed
+          world[this.location[0]][this.location[1]] = 4
+          createMap(world)
+        }
+        break
+      case 'south' :
+        if (world[this.location[0] + this.speed][this.location[1]] !== 1) {
+          this.location[0] += this.speed
+        }
+        break
+      case 'east' :
+        if (world[this.location[0]][this.location[1] - this.speed] !== 1) {
+          this.location[1] += this.speed
+        }
+        break
+      case 'west' :
+        if (world[this.location[0]][this.location[1] - this.speed] !== 1) {
+          this.location[1] -= this.speed
+        }
+        break
+      default : alert('Error: Wrong Direction Indicated!')
+        break
+    }
+  }
+
+  static start(car) {
+    setInterval(() => car.move(), 250)
+  }
 }
 
 function createMap(map) {
@@ -32,23 +66,24 @@ function createMap(map) {
 
   for (let i = 0; i < map.length; i++) {
     for (let j = 0; j < map[i].length; j++) {
-      if (map[i][j] === 1) {
-        const $wall = document.createElement('div')
-        $wall.classList.add('wall')
-        $world.appendChild($wall)
-      }
-      if (map[i][j] === 2) {
-        const $ground = document.createElement('div')
-        $ground.classList.add('ground')
-        $world.appendChild($ground)
-      }
-      if (map[i][j] === 3) {
-        const $yellow = document.createElement('div')
-        $yellow.classList.add('yellow')
-        $world.appendChild($yellow)
-      }
-      if (map[i][j] === 4) {
-        $world.appendChild($racer)
+      switch (map[i][j]) {
+        case 1 :
+          const $wall = document.createElement('div')
+          $wall.classList.add('wall')
+          $world.appendChild($wall)
+          break
+        case 2 :
+          const $ground = document.createElement('div')
+          $ground.classList.add('ground')
+          $world.appendChild($ground)
+          break
+        case 3 :
+          const $yellow = document.createElement('div')
+          $yellow.classList.add('yellow')
+          $world.appendChild($yellow)
+          break
+        case 4 :
+          $world.appendChild($racer)
       }
     }
     const $br = document.createElement('br')
@@ -70,6 +105,12 @@ function createElement(tagName, attributes, children) {
 
 const $racer = createElement('div', { class: 'car' }, [])
 
-const racer = new RaceCar($racer, 'north', 0, [5, 13])
+const racer = new RaceCar($racer, 'north', 1, [12, 5])
 
 createMap(world)
+
+document.addEventListener('keypress', function (event) {
+  if (event.keyCode === 32) {
+    RaceCar.start(racer)
+  }
+})
