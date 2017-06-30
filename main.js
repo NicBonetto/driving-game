@@ -30,9 +30,12 @@ class RaceCar {
   }
 
   move() {
+    this.$car.className = ''
+    this.$car.classList.add('car')
     switch (this.direction) {
       case 38 :
         if (world[this.location[0] - this.speed][this.location[1]] !== 1) {
+          this.$car.classList.add('car-up')
           world[this.location[0]][this.location[1]] = 2
           this.location[0] -= this.speed
           world[this.location[0]][this.location[1]] = 4
@@ -41,6 +44,7 @@ class RaceCar {
         break
       case 40 :
         if (world[this.location[0] + this.speed][this.location[1]] !== 1) {
+          this.$car.classList.add('car-down')
           world[this.location[0]][this.location[1]] = 2
           this.location[0] += this.speed
           world[this.location[0]][this.location[1]] = 4
@@ -49,6 +53,7 @@ class RaceCar {
         break
       case 39 :
         if (world[this.location[0]][this.location[1] + this.speed] !== 1) {
+          this.$car.classList.add('car-right')
           world[this.location[0]][this.location[1]] = 2
           this.location[1] += this.speed
           world[this.location[0]][this.location[1]] = 4
@@ -57,6 +62,7 @@ class RaceCar {
         break
       case 37 :
         if (world[this.location[0]][this.location[1] - this.speed] !== 1) {
+          this.$car.classList.add('car-left')
           world[this.location[0]][this.location[1]] = 2
           this.location[1] -= this.speed
           world[this.location[0]][this.location[1]] = 4
@@ -69,7 +75,7 @@ class RaceCar {
   }
 
   static start(car) {
-    const intervalID = setInterval(() => car.move(), 250)
+    const intervalID = setInterval(() => car.move(), 200)
     this.intervalID = intervalID
   }
 
@@ -121,7 +127,7 @@ function createElement(tagName, attributes, children) {
   return $element
 }
 
-const $racer = createElement('div', { class: 'car' }, [])
+const $racer = createElement('div', { class: 'car car-up' }, [])
 
 const racer = new RaceCar($racer, 38, 1, [12, 5])
 

@@ -13,7 +13,6 @@ h4 {
 .car {
   width: 45px;
   height: 45px;
-  background-image: url('car-image.png');
   display: inline-block;
   background-size: contain;
 }
@@ -40,4 +39,23 @@ h4 {
   background-image: url('yellow.png');
   display: inline-block;
   background-size: contain;
+}
+
+.car-left {
+  background-image: url('car-image.png');
+  transform: rotate(-90deg);
+}
+
+.car-right {
+  background-image: url('car-image.png');
+  transform: rotate(90deg);
+}
+
+.car-down {
+  background-image: url('car-image.png');
+  transform: rotate(180deg);
+}
+
+.car-up {
+  background-image: url('car-image.png');
 }
